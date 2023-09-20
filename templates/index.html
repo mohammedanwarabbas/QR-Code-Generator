@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index - QR code generator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rampart One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+    <style>
+        #mh h1 {
+            font-family: "Rampart One", sans-serif;
+        }
+    </style>
+</head>
+
+<body style="background-image: url({% static 'bg3.jpg' %});background-position: center;background-size:cover;">
+
+    <div class="container text-center">
+        <div class="mt-4 p-5 bg-primary text-white rounded mb-5" id="mh">
+            <h1 class="display-1">QR Code Generator</h1>
+            <p>Want to save time? Use QR Codes</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="{% url 'generateqr' %}" method="post" name="qrform">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="qrtext" class="text-white h4">Text to be converted into QR code</label>
+                <input name="qrtext" type="text" class="form-control input-lg" placeholder="example : www.google.com" required>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your QR with anyone else.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="bs" class="text-white h4">Box size</label>
+                <input name="bs" type="text" class="form-control input-lg" placeholder="example : 10">
+            </div>
+
+            <div class="form-group">
+                <label for="b" class="text-white h4">Border</label>
+                <input name="b" type="text" class="form-control input-lg" placeholder="example : 5">
+            </div>
+
+            <div class="form-group">
+                <label for="fc" class="text-white h4">Fill color</label>
+                <input name="fc" type="text" class="form-control input-lg" placeholder="example :black">
+            </div>
+
+            <div class="form-group">
+                <label for="bc" class="text-white h4">Back color</label>
+                <input name="bc" type="text" class="form-control input-lg" placeholder="example :white">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary btn-lg">Generate QR code</button>
+        </form>
+    </div>
+
+
+
+
+
+
+    <script src=""></script>
+</body>
+
+</html>
